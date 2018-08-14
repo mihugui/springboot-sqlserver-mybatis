@@ -1,8 +1,11 @@
 package com.ibms.app.web;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.ibms.app.beans.CecEquipment;
-import com.ibms.app.beans.CecEquipmentExample;
 import com.ibms.app.service.CecEquipmentService;
+import com.ibms.app.utils.AjaxResult;
+import com.ibms.app.utils.Globals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +24,18 @@ public class TextController {
 
     @RequestMapping("hello")
     @ResponseBody
-    public List<CecEquipment> getEquipment(CecEquipmentExample cecEquipmentExample){
-        return cecEquipmentService.getAll(cecEquipmentExample);
+    public AjaxResult getEquipment(){
+        AjaxResult msg = new AjaxResult();
+
+        try {
+            msg.setRetcode(200);
+            msg.setData(cecEquipmentService.getAll());
+            msg.setRetmsg("查询成功");
+        }catch(Exception e){
+            e.printStackTrace();
+            msg.setRetcode(Globals.HTTP_BAD_REQUEST);
+            msg.setRetmsg("操作失败");
+        }
+        return msg;
     }
 }
