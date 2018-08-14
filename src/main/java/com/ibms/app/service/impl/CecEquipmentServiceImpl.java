@@ -11,6 +11,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+  *@ClassNmae CecEquipmentServiceImpl
+  *@Description 设备服务
+  *@Author PWT
+  *@Date 2018/8/14 16:40
+  *@Version 1.0
+  **/
+
 @Service
 public class CecEquipmentServiceImpl implements CecEquipmentService {
 

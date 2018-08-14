@@ -14,6 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+  *@ClassNmae TextController
+  *@Description TODO
+  *@Author PWT
+  *@Date 2018/8/14 16:41
+  *@Version 1.0
+  **/
+
 @RestController
 @EnableAutoConfiguration
 @RequestMapping("/test")

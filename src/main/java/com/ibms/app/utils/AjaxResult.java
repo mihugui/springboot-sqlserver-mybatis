@@ -4,9 +4,7 @@ package com.ibms.app.utils;
  * @Description: 封装返回数据  
  */  
 public class AjaxResult{
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
   
     private int retcode = 1;  
