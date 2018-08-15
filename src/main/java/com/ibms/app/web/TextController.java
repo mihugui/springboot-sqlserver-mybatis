@@ -1,8 +1,5 @@
 package com.ibms.app.web;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageInfo;
-import com.ibms.app.beans.CecEquipment;
 import com.ibms.app.service.CecEquipmentService;
 import com.ibms.app.utils.AjaxResult;
 import com.ibms.app.utils.Globals;
@@ -11,8 +8,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
   *@ClassNmae TextController

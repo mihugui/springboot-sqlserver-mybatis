@@ -10,14 +10,8 @@ package com.ibms.app.utils;
  **/
 public class Globals {
 
-    public static final int Log_Type_LOGIN = 1; //登录
-    public static final int Log_Type_EXIT = 2;  //退出
-    public static final int Log_Type_INSERT = 3; //插入
-    public static final int Log_Type_DELETE = 4; //删除
-    public static final int Log_Type_UPDATE = 5; //更新
-    public static final int Log_Type_UPLOAD = 6; //上传
-    public static final int Log_Type_LOOK = 7 ; //查看
-    public static final int Log_Type_OTHER = 8 ; //其他
+    public static final String LOGIN_TOKEN_MISS = "token失效"; //token失效
+
 
     public static int HTTP_CONTINUE = 100; //Continue
     public static int HTTP_OK = 200; //OK
