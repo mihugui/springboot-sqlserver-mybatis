@@ -37,7 +37,7 @@
         </javaClientGenerator>
 
         <!-- 相关表的配置 -->
-        <table tableName="CEC_EQUIPMENT" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+        <table tableName="CEC_ALARM_HISTORY" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>
