@@ -1,7 +1,10 @@
 package com.ibms.app.utils;
 
 import com.ibms.app.service.DataSave;
+import com.ibms.app.service.GlywMsg;
+import com.ibms.app.service.ValueChanger;
 import com.tibco.tibjms.TibjmsQueueConnectionFactory;
+import com.tibco.tibjms.TibjmsTopicConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +21,10 @@ import javax.jms.*;
 @Component
 public class AdapterQueue {
 
-    private String serverUrl = "tcp://192.169.110.201:7222";
+    private String serverUrl = "tcp://127.0.0.1:7222";
     private String userName = "admin";
     private String password  = "admin";
-    private String queueName = "queue.mj.data";
+    private String queueName = "topic.glyw";
 
     private Connection connection ;
     private Session session ;
@@ -29,7 +32,7 @@ public class AdapterQueue {
     private MessageConsumer msgConsumer;
 
     @Autowired
-    private DataSave dataSave;
+    private GlywMsg glywMsg;
 
     private static AdapterQueue sender = new AdapterQueue();
 
@@ -40,7 +43,7 @@ public class AdapterQueue {
     @PostConstruct //通过@PostConstruct实现初始化bean之前进行的操作
     public void init() {
         sender = this;
-        sender.dataSave = this.dataSave;
+        sender.glywMsg = this.glywMsg;
         // 初使化时将已静态化的testService实例化
     }
 
@@ -48,13 +51,13 @@ public class AdapterQueue {
     public void createQueue(){
         try
         {
-            ConnectionFactory factory = new TibjmsQueueConnectionFactory(serverUrl);
+            ConnectionFactory factory = new TibjmsTopicConnectionFactory(serverUrl);
             connection = factory.createConnection(userName,password);
             connection.start();
             /* create the session */
             session = connection.createSession(true,Session.AUTO_ACKNOWLEDGE);
 
-            queues = session.createQueue(queueName);
+            queues = session.createTopic(queueName);
             /* create the producer */
             msgConsumer = session.createConsumer(queues);
 
@@ -67,7 +70,7 @@ public class AdapterQueue {
                         TextMessage message = (TextMessage)msg ;
                         String reciveMessage = message.getText();
                         System.out.println("收到消息:"+message.getText());
-                        sender.dataSave.DataAnalysis(message.getText());
+                        sender.glywMsg.DataAnalysis(message.getText());
                         session.commit();
                     } catch (JMSException e) {
                         e.printStackTrace();

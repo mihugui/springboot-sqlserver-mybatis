@@ -6,7 +6,7 @@ server:
 spring:
     datasource:
         name: test
-        url: jdbc:sqlserver://192.169.110.202:1433;DatabaseName=ibms
+        url: jdbc:sqlserver://192.168.0.226:1433;DatabaseName=ibms
         username: ibms
         password: ibms
         # 使用druid数据源

@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 public class MyApplicationRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
-        AdapterQueue.getInstance().createQueue();
-
+        //AdapterQueue.getInstance().createQueue();
     }
 }
